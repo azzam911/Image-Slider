@@ -1,0 +1,87 @@
+* {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Tahoma, Arial;
+}
+
+.container {
+    margin: 20px auto;
+    text-align: center;
+    width: 800px;
+}
+
+.container .counter-images {
+    text-align: left;
+    background-color: #3a3a3aae;
+    width: fit-content;
+    color: #FFF;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+    left: 20%;
+    font-size: 15px;
+}
+.container .images-slider {
+    position: relative;
+    height: 250px;
+}
+
+.container .images-slider img {
+    position: absolute;
+    left: 50%;
+    width: 250px;
+    height: 200px;
+    opacity: 0;
+    transition: 1s;
+    transform: translateX(-250px);
+}
+.container .images-slider img.active {
+    opacity: 1;
+    transform: translateX(-50%);
+}
+.container .buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 700px;
+    margin: auto;
+    align-items: center;
+}
+
+.container .buttons .prev, 
+.container .buttons .next {
+    background-color: green;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+    width: 80px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.container .buttons .prev.disapled, 
+.container .buttons .next.disapled {
+    background-color: #00800082;
+    cursor: no-drop;
+}
+
+.container .bullets ul {
+    display: flex;
+    
+}
+
+.container .bullets ul li {
+    background-color: #eee;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.container .bullets ul li.active {
+    background-color: green;
+}
