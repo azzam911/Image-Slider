@@ -1,102 +1,91 @@
-// Ger Slider Images
-let myimages = Array.from(document.querySelectorAll(".container .images-slider img"));
+let myImages = Array.from(document.querySelectorAll(".container .images img"));
+let imagesCounter = document.querySelector(".container .image-counter");
+let BulletsContainer = document.querySelector(".container .bullets")
 
-// Get Bullets slider
-let bulletsContainer = document.querySelector(".container .bullets");
-// Set Cuurent Slide
-let currentSlide = 0;
+//Get Images Length
+let imgsLength = myImages.length;
 
-// Get Number Of Slides
-let imageCount = myimages.length;
+// set current slide
 
-// Slide Number Element 
-let counter = document.querySelector(".container .counter-images");
-
-// Previous and Next Buttens
-let nextButtten = document.querySelector(".container .buttons .next");
-let prevButtten = document.querySelector(".container .buttons .prev");
-
-// Handle click on previous and next buttens
-nextButtten.onclick = nextSlide;
-prevButtten.onclick = prevSlide;
+let cuurentSlide = 0;
 
 
 
-// create Main Ul Element
+
+// Get Prev and Next Butens
+
+let nextButten = document.querySelector(".container .buttens .next");
+let prevButten = document.querySelector(".container .buttens .prev");
+
+nextButten.onclick = nextSlide;
+prevButten.onclick = prevSlide;
+
+
+
+// Create The Main Ul
 
 let mainUl = document.createElement("ul");
-mainUl.setAttribute("id","pagination-ul");
-for (let i = 1; i <= imageCount;i++) {
 
+mainUl.setAttribute("id","main-ul");
+
+for (let i =0 ;i < imgsLength;i++) {
     let li = document.createElement("li");
-
-    li.setAttribute("data-index",i);
-
+    li.setAttribute("data-index" , i + 1);
     mainUl.appendChild(li);
 }
-bulletsContainer.appendChild(mainUl);
+
+BulletsContainer.appendChild(mainUl);
+let lis =Array.from(document.querySelectorAll(".container .buttens .bullets ul li"));
 
 
-// Get The Created Ul 
-let createdUl = document.getElementById("pagination-ul");
+theChecker()
+// Create Checker Function
+function theChecker() {
+    //Set Number of Current Images
+    imagesCounter.innerHTML=`Slide #${cuurentSlide + 1} of ${imgsLength}`;
+    removeActiveClass();
+    // Show the cuurent Image
+    myImages[cuurentSlide].classList.add("active");
+    
+    //Show The Current li
+    lis[cuurentSlide].classList.add("active");
 
-// Get All Bullets From Main Ul
-let setacBullte = Array.from(document.querySelectorAll(".container .bullets ul li"));
+    if (cuurentSlide == 0) {
+        prevButten.classList.add("disabled");
+    }else {
+        prevButten.classList.remove("disabled");
+    }
+    
+    if (cuurentSlide == imgsLength - 1) {
+        nextButten.classList.add("disabled");
+    }else {
+        nextButten.classList.remove("disabled");
+    }
+
+}
+
 
 function nextSlide() {
-    if (currentSlide == imageCount -1) {
+    if (cuurentSlide == imgsLength - 1) {
         return false
     }
-    currentSlide++;
-    thechecker();
+    cuurentSlide++;
+    theChecker()
 }
 function prevSlide() {
-    if (currentSlide == 0) {
+    if (cuurentSlide == 0) {
         return false
     }
-    currentSlide--;
-    thechecker();
+    cuurentSlide--;
+    theChecker()
 }
 
 
-
-thechecker()
-
-// Create the Checker Function
-function thechecker() {
-    removeActive();
-// Set The Slide Number
-    counter.innerHTML= `slide #${currentSlide + 1} of ${imageCount}`;
-
-    // Set active class on current slide
-    myimages[currentSlide].classList.add("active");
-
-    //Set active class on bullets
-    setacBullte[currentSlide].className="active";
-
-    if (currentSlide == 0 ) {
-        prevButtten.classList.add("disapled");
-    }else {
-        prevButtten.classList.remove("disapled");
-    }
-    if (currentSlide == 4) {
-        nextButtten.classList.add("disapled");
-    }else {
-        nextButtten.classList.remove("disapled");
-    }
-    
-    
-}
-
-
-function removeActive() {
-    myimages.forEach(img => {
+function removeActiveClass() {
+    myImages.forEach(img => {
         img.classList.remove("active");
     });
-
-    setacBullte.forEach(bullet => {
-        bullet.classList.remove("active");
-    })
-    
-
+    lis.forEach(li => {
+        li.classList.remove("active");
+    });
 }

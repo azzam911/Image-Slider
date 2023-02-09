@@ -1,87 +1,178 @@
 * {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 body {
-    font-family: Tahoma, Arial;
+    font-family: Tahoma,  Arial;
 }
 
 .container {
-    margin: 20px auto;
-    text-align: center;
     width: 800px;
+    margin: 20px auto;
+    padding: 5px;
 }
 
-.container .counter-images {
-    text-align: left;
-    background-color: #3a3a3aae;
+.container .image-counter {
+    font-size: 1.1rem;
+    background-color: #333333e8;
     width: fit-content;
-    color: #FFF;
-    padding: 10px;
-    border-radius: 10px;
-    position: relative;
-    left: 20%;
-    font-size: 15px;
-}
-.container .images-slider {
-    position: relative;
-    height: 250px;
+    border-radius: 0.5rem;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
 }
 
-.container .images-slider img {
+.container .images {
+    position: relative;
+    height: 30rem;
+}
+.container .images img {
     position: absolute;
     left: 50%;
-    width: 250px;
-    height: 200px;
+    transform: translateX(-100%);
+    width: 300px;
     opacity: 0;
     transition: 1s;
-    transform: translateX(-250px);
+    border-radius: 10px;
 }
-.container .images-slider img.active {
+.container .images img.active {
     opacity: 1;
     transform: translateX(-50%);
 }
-.container .buttons {
+
+.container .buttens {
     display: flex;
+    width: 40rem;
     justify-content: space-between;
-    width: 700px;
     margin: auto;
     align-items: center;
 }
 
-.container .buttons .prev, 
-.container .buttons .next {
-    background-color: green;
+.container .buttens .prev,
+.container .buttens .next {
+    background-color: rgb(40 160 40);
+    font-size: 20px;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 0.5rem;
     color: white;
-    width: 80px;
+    width: 6rem;
+    text-align: center;
     cursor: pointer;
     user-select: none;
 }
-
-.container .buttons .prev.disapled, 
-.container .buttons .next.disapled {
-    background-color: #00800082;
+.container .buttens .prev.disabled,
+.container .buttens .next.disabled {
     cursor: no-drop;
+    background-color: rgb(40 160 40 / 50%);
 }
 
-.container .bullets ul {
+.container .buttens .bullets ul {
     display: flex;
-    
 }
 
-.container .bullets ul li {
-    background-color: #eee;
+.container .buttens .bullets ul li {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    margin-left: 5px;
+    background-color: #eee;
+    margin-left: 0.2rem;
 }
 
-.container .bullets ul li.active {
-    background-color: green;
+.container .buttens .bullets ul li.active {
+    background-color: rgb(40 160 40);
+}
+
+
+@media (max-width: 360px) {
+    .container {
+        width: 10rem;
+        margin: auto;
+    }
+    .container .buttens {
+        width: 10rem;
+        font-size: 0.3rem;
+    }
+    .container .buttens .bullets ul li {
+        display: none;
+    }
+
+    body {
+        font-size: 1rem;
+    }
+    .container .buttens .prev,
+.container .buttens .next {
+    font-size: 10px;
+    margin-left: 20px;
+}
+.container .images img {
+    width: 200px;
+}
+.container .images {
+    height: 20rem;
+}
+
+}
+
+@media (min-width: 361px) {
+    .container {
+        width: 20rem;
+        margin: auto;
+    }
+    .container .buttens {
+        width: 15rem;
+    }
+    .container .buttens .bullets ul li {
+        display: none;
+    }
+    
+}
+
+@media (min-width: 500px) {
+    .container {
+        width: 30rem;
+    }
+    .container .buttens {
+        width: 20rem;
+    }
+    .container .buttens .bullets ul li {
+        display: none;
+    }
+    
+}
+
+
+
+
+@media (min-width: 700px) {
+    .container {
+        width: 40rem;
+    }
+    .container .buttens {
+        width: 400px;
+    }
+    .container .buttens .bullets ul li {
+        display: none;
+    }
+    
+}
+
+
+
+
+
+@media (min-width: 900px) {
+    .container {
+        width: 800px;
+    }
+    .container .buttens {
+        width: 600px;
+    }
+    .container .buttens .bullets ul li {
+        display: block;
+    }
+    
 }
